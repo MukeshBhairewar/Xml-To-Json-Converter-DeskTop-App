@@ -7,6 +7,7 @@ namespace Xml_To_Json_Converter
 {
     public partial class Form1 : Form
     {
+        private string xmlFilePath;
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace Xml_To_Json_Converter
         private void button2_Click(object sender, EventArgs e)
         {
             // Convert XML to JSON with indentation
-            string xmlFilePath = textBox1.Text;
+            xmlFilePath = textBox1.Text;
 
             if (File.Exists(xmlFilePath))
             {
@@ -61,6 +62,9 @@ namespace Xml_To_Json_Converter
                         File.WriteAllText(jsonFilePath, json);
 
                         MessageBox.Show("Conversion successful. JSON file saved at: " + jsonFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Update the textbox with the XML file path
+                        textBox1.Text = xmlFilePath;
                     }
                 }
                 catch (Exception ex)
@@ -102,7 +106,7 @@ namespace Xml_To_Json_Converter
         private void button3_Click(object sender, EventArgs e)
         {
             // Convert XML to JSON with indentation
-            string xmlFilePath = textBox1.Text;
+            xmlFilePath = textBox1.Text;
 
             if (File.Exists(xmlFilePath))
             {
